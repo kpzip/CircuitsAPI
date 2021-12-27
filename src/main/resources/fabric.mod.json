@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "circuitsAPI",
+  "id": "circuitsapi",
   "version": "1.0.0",
 
   "name": "Circuits API",
@@ -20,7 +20,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "com.kpzip.circuitsapi.CircuitsAPI"
     ]
   },
   "mixins": [

@@ -1,4 +1,4 @@
-package com.kpzip.CircuitsAPI;
+package com.kpzip.circuitsapi;
 
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;

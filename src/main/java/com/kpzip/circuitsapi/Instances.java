@@ -1,4 +1,4 @@
-package com.kpzip.CircuitsAPI;
+package com.kpzip.circuitsapi;
 
 public final class Instances {
 	
