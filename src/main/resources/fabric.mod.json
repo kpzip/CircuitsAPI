@@ -1,20 +1,21 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
-  "version": "${version}",
+  "id": "circuitsAPI",
+  "version": "1.0.0",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Circuits API",
+  "description": "Circuit Simulation Utils for CircuitsMod",
   "authors": [
     "Me!"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "",
+    "issues": "https://github.com/kpzip/CircuitsAPI/issues",
+    "sources": "https://github.com/kpzip/CircuitsAPI"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "MIT Lisence",
+  "icon": "",
 
   "environment": "*",
   "entrypoints": {
@@ -23,7 +24,6 @@
     ]
   },
   "mixins": [
-    "modid.mixins.json"
   ],
 
   "depends": {
@@ -33,6 +33,6 @@
     "java": ">=17"
   },
   "suggests": {
-    "another-mod": "*"
+    "circuits": ">=1.0.0"
   }
 }
