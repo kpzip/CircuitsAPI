@@ -1,9 +1,7 @@
-# Fabric Example Mod
+# Circuits API
 
-## Setup
+Latest Release: [here]("")
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+Credits: Hausen and [Paul Falstad]("http://www.falstad.com/mathphysics.html") for creating the [circuit simulator code]("https://github.com/hausen/circuit-simulator")
 
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+Use in conjunction with the [circuits minecraft mod]("https://github.com/kpzip/CircuitsMod")
