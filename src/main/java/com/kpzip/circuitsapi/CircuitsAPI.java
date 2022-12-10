@@ -1,8 +1,9 @@
 package com.kpzip.circuitsapi;
 
-import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import net.fabricmc.api.ModInitializer;
 
 public class CircuitsAPI implements ModInitializer {
 	
