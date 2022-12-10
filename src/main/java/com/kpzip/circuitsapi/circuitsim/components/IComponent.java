@@ -11,4 +11,8 @@ public interface IComponent {
 	 */
 	public double[] getConstraints(Node node1, Node node2);
 	
+	public default void differential(double V, double I, double dt) {
+		
+	}
+	
 }

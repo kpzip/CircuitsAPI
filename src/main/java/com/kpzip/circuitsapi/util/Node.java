@@ -12,6 +12,8 @@ public class Node implements Iterable<IComponent> {
 	
 	private Function voltage = new Function();
 	
+	private Boolean ground = false;
+	
 	public Node() {	
 	}
 
@@ -22,6 +24,11 @@ public class Node implements Iterable<IComponent> {
 	
 	public double getVoltage(double time) {
 		return voltage.getValue(time);
+	}
+	
+	public Node setAsGround(boolean ground) {
+		this.ground = ground;
+		return this;
 	}
 
 }

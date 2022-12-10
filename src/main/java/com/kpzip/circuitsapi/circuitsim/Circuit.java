@@ -10,6 +10,10 @@ public class Circuit {
 	private ArrayList<IComponent> Components;
 	private ArrayList<Node> Nodes;
 	
+	public void simulate() {
+		
+	}
+	
 	
 	
 	
