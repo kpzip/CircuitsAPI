@@ -10,8 +10,17 @@ public class Circuit {
 	private ArrayList<IComponent> Components;
 	private ArrayList<Node> Nodes;
 	
+	public Circuit() {
+		Nodes = new ArrayList<Node>();
+		Nodes.add(new Node().setAsGround(true));
+	}
+	
 	public void simulate() {
 		
+	}
+	
+	public Node getGndNode() {
+		return Nodes.get(0);
 	}
 	
 	
