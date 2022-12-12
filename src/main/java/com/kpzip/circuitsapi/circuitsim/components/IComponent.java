@@ -1,9 +1,10 @@
 package com.kpzip.circuitsapi.circuitsim.components;
 
+import java.util.ArrayList;
+
 import com.kpzip.circuitsapi.util.Node;
 
 public interface IComponent {
-	
 	
 	/**
 	 * aV + bI = c
@@ -14,5 +15,7 @@ public interface IComponent {
 	public default void differential(double V, double I, double dt) {
 		
 	}
+	
+	public ArrayList<Node []> getConnections();
 	
 }

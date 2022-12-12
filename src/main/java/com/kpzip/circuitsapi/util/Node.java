@@ -14,6 +14,9 @@ public class Node implements Iterable<IComponent> {
 	
 	private Boolean ground = false;
 	
+	//-1 indicates that the node is not part of a circuit
+	private int nodeNumber = -1;
+	
 	public Node() {	
 	}
 
@@ -29,6 +32,15 @@ public class Node implements Iterable<IComponent> {
 	public Node setAsGround(boolean ground) {
 		this.ground = ground;
 		return this;
+	}
+	
+	public Node setNodeNumber(int nodenum) {
+		this.nodeNumber = nodenum;
+		return this;
+	}
+	
+	public int getNodeNumber() {
+		return this.nodeNumber;
 	}
 
 }

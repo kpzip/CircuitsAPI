@@ -1,5 +1,7 @@
 package com.kpzip.circuitsapi.circuitsim.components.passive;
 
+import java.util.ArrayList;
+
 import com.kpzip.circuitsapi.circuitsim.components.IComponent;
 import com.kpzip.circuitsapi.util.Node;
 
@@ -27,6 +29,13 @@ public class Capacitor implements IComponent {
 	public void differential(double V, double I, double dt) {
 		//Euler approximation 
 		charge += I * dt;
+	}
+	
+	@Override
+	public ArrayList<Node[]> getConnections() {
+		ArrayList<Node[]> connections = new ArrayList<Node[]>();
+		connections.add(new Node [] {n1, n2});
+		return connections;
 	}
 
 }
