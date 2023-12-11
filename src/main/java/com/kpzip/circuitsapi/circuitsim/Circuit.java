@@ -1,61 +1,73 @@
 package com.kpzip.circuitsapi.circuitsim;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeSet;
 
-import com.kpzip.circuitsapi.circuitsim.components.IComponent;
-import com.kpzip.circuitsapi.util.Node;
-import com.kpzip.circuitsapi.util.math.Matrix;
-import com.kpzip.circuitsapi.util.math.Vector;
+import com.kpzip.circuitsapi.circuitsim.components.Component;
 
-//Defines a circuit with all its components and connections
 public class Circuit {
-	private ArrayList<IComponent> Components;
-	private ArrayList<Node> Nodes;
 	
-	public Circuit() {
-		Nodes = new ArrayList<Node>();
-		Nodes.add(new Node().setAsGround(true).setNodeNumber(0));
-	}
+	private TreeSet<Node> nodes;
+	private List<Component> components;
 	
-	public void simulate() {
+	private void simulationStep(double dt) {
 		
-		Matrix solver = new Matrix(Nodes.size() + Components.size());
-		Vector solver2 = new Vector(Nodes.size() + Components.size());
+		int numVoltages = nodes.size();
+		int numCurrents = components.stream().mapToInt((c) -> c.connectionCount()).sum();
+		int numToSolveFor = numVoltages + numCurrents;
 		
-		double [] blank_row = new double [Nodes.size() + Components.size()];
-		double [] temp_row = blank_row.clone();
+		//The matrix representing the coefficients in the system
+		double [] [] matrix = new double[numToSolveFor] [numToSolveFor];
 		
-		//Ground voltate = 0
-		temp_row[0] = 1.0d;
-		solver.storeRow(0, temp_row);
+		//The vector representing the vector (The constants in each equation)
+		double [] constants = new double[numToSolveFor];
 		
-		int current_row = 1;
-		
-		for (IComponent component : Components) {
-			for (Node [] connection : component.getConnections()) {
-				double [] constraint = component.getConstraints(connection[0], connection[1]);
-				temp_row = blank_row.clone();
-				
-				temp_row[connection[0].getNodeNumber()] = constraint[0];
-				temp_row[connection[1].getNodeNumber()] = -constraint[0];
-				
-				
-			}
+		//enter values for component constraints
+		for (Component c : components) {
+			double[] coefficients = new double[numToSolveFor];
+			NodePair[] connections = c.connections();
+			double[] constraints = c.constraints();
 		}
+		
+		//enter values for Kirchhoff's junction laws
+		
+		components.forEach((c) -> c.differential(dt));
 	}
 	
-	public Node getGndNode() {
-		return Nodes.get(0);
+	public class Node implements Comparable<Node> {
+		
+		//id 0 is ground, negative is not part of the circuit
+		private final int id;
+		
+		private double voltage = 0;
+		
+		private Node(int id) {
+			this.id = id;
+		}
+		
+		public double getVoltage() {
+			return voltage;
+		}
+
+		public void setVoltage(double voltage) {
+			this.voltage = voltage;
+		}
+		
+		public int getId() {
+			return id;
+		}
+
+		@Override
+		public int compareTo(Node o) {
+			return this.id - o.id;
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			if (obj instanceof Node o) return o.id == this.id;
+			return false;
+		}
+
 	}
-	
-	public void addNode(Node node) {
-		Nodes.add(node);
-		node.setNodeNumber(Nodes.size()-1);
-	}
-	
-	
-	
-	
-	
-	
+
 }
