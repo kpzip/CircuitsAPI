@@ -2,19 +2,27 @@ package com.kpzip.circuitsapi.tests;
 
 import com.kpzip.circuitsapi.circuitsim.Circuit;
 import com.kpzip.circuitsapi.circuitsim.components.Battery;
+import com.kpzip.circuitsapi.circuitsim.components.Capacitor;
 import com.kpzip.circuitsapi.circuitsim.components.Resistor;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Circuit circuit = new Circuit();
-		Circuit.Node n1 = circuit.createNode();
-		Battery b = new Battery(circuit.getGround(), n1, 10);
-		Resistor r = new Resistor(circuit.getGround(), n1, 100);
-		circuit.addComponent(r);
+		Circuit.ConnectionPoint n1 = circuit.createConnectionPoint();
+		Circuit.ConnectionPoint n2 = circuit.createConnectionPoint();
+		Battery b = new Battery(circuit.getGround(), n2, 10);
+		Capacitor c1 = new Capacitor(circuit.getGround(), n1, 0.0001);
+		Resistor r2 = new Resistor(n1, n2, 100);
+		circuit.addComponent(c1);
+		circuit.addComponent(r2);
 		circuit.addComponent(b);
-		circuit.simulationStep(0);
-		System.out.println(r.getCurrent());
+		for (int i = 0; i < 100000; i++) {
+			circuit.simulationStep(0.0000001);
+			System.out.println(r2.getCurrent());
+			System.out.println(n2.getVoltage());
+			System.out.println(circuit);
+		}
 	}
 
 }

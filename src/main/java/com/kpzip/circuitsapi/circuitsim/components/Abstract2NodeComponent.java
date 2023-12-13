@@ -1,16 +1,16 @@
 package com.kpzip.circuitsapi.circuitsim.components;
 
-import com.kpzip.circuitsapi.circuitsim.Circuit.Node;
-import com.kpzip.circuitsapi.circuitsim.NodePair;
+import com.kpzip.circuitsapi.circuitsim.Circuit;
+import com.kpzip.circuitsapi.circuitsim.ConnectionPointPair;
 
 public abstract class Abstract2NodeComponent implements Component {
 
-	protected Node first;
-	protected Node second;
+	protected Circuit.ConnectionPoint first;
+	protected Circuit.ConnectionPoint second;
 	
 	protected double current = 0;
 	
-	public Abstract2NodeComponent(Node first, Node second) {
+	public Abstract2NodeComponent(Circuit.ConnectionPoint first, Circuit.ConnectionPoint second) {
 		this.first = first;
 		this.second = second;
 	}
@@ -37,8 +37,8 @@ public abstract class Abstract2NodeComponent implements Component {
 	}
 	
 	@Override
-	public final NodePair[] connections() {
-		return new NodePair[] {new NodePair(first, second)};
+	public final ConnectionPointPair[] connections() {
+		return new ConnectionPointPair[] {new ConnectionPointPair(first, second)};
 	}
 	
 	@Override
@@ -53,6 +53,10 @@ public abstract class Abstract2NodeComponent implements Component {
 	
 	public double getCurrent() {
 		return current;
+	}
+	
+	public boolean isReversed() {
+		return first.compareTo(second) < 0;
 	}
 
 }

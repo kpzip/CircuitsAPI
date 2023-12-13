@@ -1,6 +1,6 @@
 package com.kpzip.circuitsapi.circuitsim.components;
 
-import com.kpzip.circuitsapi.circuitsim.NodePair;
+import com.kpzip.circuitsapi.circuitsim.ConnectionPointPair;
 
 public interface Component {
 	
@@ -8,7 +8,7 @@ public interface Component {
 	
 	int connectionCount();
 	
-	NodePair[] connections();
+	ConnectionPointPair[] connections();
 	
 	//current dependence, voltage dependence, and constant dependence for each connection
 	double[] constraints();

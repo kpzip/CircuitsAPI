@@ -6,7 +6,7 @@ public class Battery extends Abstract2NodeComponent {
 
 	private final double emf;
 	
-	public Battery(Circuit.Node annode, Circuit.Node cathode, double emf) {
+	public Battery(Circuit.ConnectionPoint annode, Circuit.ConnectionPoint cathode, final double emf) {
 		super(annode, cathode);
 		this.emf = emf;
 	}
@@ -23,9 +23,12 @@ public class Battery extends Abstract2NodeComponent {
 
 	@Override
 	public double constantDependence() {
+		//Return -emf if the battery is in reverse
+		return isReversed() ? emf : -emf;
+	}
+	
+	public double getEmf() {
 		return emf;
 	}
-
 	
-
 }

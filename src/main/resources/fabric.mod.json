@@ -6,7 +6,7 @@
   "name": "Circuits API",
   "description": "Circuit Simulation Utils for CircuitsMod",
   "authors": [
-    "Me!"
+    "kpzip"
   ],
   "contact": {
     "homepage": "",
@@ -27,10 +27,6 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.11.3",
-    "fabric": "*",
-    "minecraft": "1.18.x",
-    "java": ">=17"
   },
   "suggests": {
     "circuits": ">=1.0.0"
