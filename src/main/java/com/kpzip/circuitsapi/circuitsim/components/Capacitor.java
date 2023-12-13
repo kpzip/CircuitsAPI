@@ -6,7 +6,7 @@ public class Capacitor extends Abstract2NodeComponent {
 	
 	private final double capacitance;
 	
-	private double charge;
+	private double charge = 0.0;
 
 	//Capacitance is in Farads
 	public Capacitor(ConnectionPoint first, ConnectionPoint second, final double capacitance) {
@@ -31,6 +31,10 @@ public class Capacitor extends Abstract2NodeComponent {
 	
 	public double getCapacitance() {
 		return capacitance;
+	}
+	
+	public double getCharge() {
+		return charge;
 	}
 	
 	@Override

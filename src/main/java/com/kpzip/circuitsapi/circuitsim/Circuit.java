@@ -89,6 +89,7 @@ public class Circuit {
 				ConnectionPointPair[] allConnections = arr.toArray();
 			
 				//make it so all of the currents flowing into the node sum up to zero
+				//Note: current flows from high node values to low node values
 				for (int i = 0; i < allConnections.length; i++) {
 					if (allConnections[i].first == p) {
 						coefficients[i] = -1;
