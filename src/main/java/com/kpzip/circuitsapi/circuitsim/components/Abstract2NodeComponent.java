@@ -45,5 +45,14 @@ public abstract class Abstract2NodeComponent implements Component {
 	public void reset() {
 		current = 0;
 	}
+	
+	@Override
+	public void updateCurrent(double[] currents) {
+		current = currents[0];
+	}
+	
+	public double getCurrent() {
+		return current;
+	}
 
 }

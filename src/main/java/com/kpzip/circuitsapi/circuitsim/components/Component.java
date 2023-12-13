@@ -10,7 +10,10 @@ public interface Component {
 	
 	NodePair[] connections();
 	
+	//current dependence, voltage dependence, and constant dependence for each connection
 	double[] constraints();
+	
+	void updateCurrent(double[] currents);
 	
 	default void differential(double dt) {};
 

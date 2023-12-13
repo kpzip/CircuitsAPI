@@ -2,16 +2,20 @@ package com.kpzip.circuitsapi.circuitsim;
 
 import java.util.Objects;
 
-import com.kpzip.circuitsapi.circuitsim.Circuit.Node;
-
 public class NodePair {
 
-	public Node first;
-	public Node second;
+	public final Circuit.Node first;
+	public final Circuit.Node second;
 	
-	public NodePair(Node first, Node second) {
-		this.first = first;
-		this.second = second;
+	public NodePair(Circuit.Node first, Circuit.Node second) {
+		if (first.compareTo(second) > 0) {
+			this.first = first;
+			this.second = second;
+		}
+		else {
+			this.first = second;
+			this.second = first;
+		}
 	}
 
 	@Override
