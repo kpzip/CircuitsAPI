@@ -16,7 +16,7 @@ public abstract class Abstract2NodeComponent implements Component {
 	}
 	
 	@Override
-	public final int nodeCount() {
+	public final int connectionPointCount() {
 		return 2;
 	}
 	

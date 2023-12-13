@@ -1,6 +1,7 @@
-package com.kpzip.circuitsapi.circuitsim.components;
+package com.kpzip.circuitsapi.circuitsim.components.passive;
 
 import com.kpzip.circuitsapi.circuitsim.Circuit;
+import com.kpzip.circuitsapi.circuitsim.components.Abstract2NodeComponent;
 
 public class Resistor extends Abstract2NodeComponent {
 

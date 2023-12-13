@@ -4,7 +4,7 @@ import com.kpzip.circuitsapi.circuitsim.ConnectionPointPair;
 
 public interface Component {
 	
-	int nodeCount();
+	int connectionPointCount();
 	
 	int connectionCount();
 	

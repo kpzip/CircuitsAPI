@@ -1,9 +1,9 @@
 package com.kpzip.circuitsapi.tests;
 
 import com.kpzip.circuitsapi.circuitsim.Circuit;
-import com.kpzip.circuitsapi.circuitsim.components.Battery;
-import com.kpzip.circuitsapi.circuitsim.components.Inductor;
-import com.kpzip.circuitsapi.circuitsim.components.Resistor;
+import com.kpzip.circuitsapi.circuitsim.components.passive.Inductor;
+import com.kpzip.circuitsapi.circuitsim.components.passive.Resistor;
+import com.kpzip.circuitsapi.circuitsim.components.source.Battery;
 
 public class Main {
 

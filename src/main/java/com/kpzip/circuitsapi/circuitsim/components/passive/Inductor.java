@@ -1,6 +1,7 @@
-package com.kpzip.circuitsapi.circuitsim.components;
+package com.kpzip.circuitsapi.circuitsim.components.passive;
 
-import com.kpzip.circuitsapi.circuitsim.Circuit.ConnectionPoint;
+import com.kpzip.circuitsapi.circuitsim.Circuit;
+import com.kpzip.circuitsapi.circuitsim.components.Abstract2NodeComponent;
 
 public class Inductor extends Abstract2NodeComponent {
 	
@@ -8,7 +9,7 @@ public class Inductor extends Abstract2NodeComponent {
 	
 	private double flux = 0.0;
 
-	public Inductor(ConnectionPoint first, ConnectionPoint second, final double inductance) {
+	public Inductor(Circuit.ConnectionPoint first, Circuit.ConnectionPoint second, final double inductance) {
 		super(first, second);
 		this.inductance = inductance;
 	}

@@ -22,7 +22,7 @@ public class Circuit {
 	private TreeSet<ConnectionPoint> connectionPoints;
 	private ArrayList<Component> components;
 	private ConnectionPoint ground;
-	public int connectionPointIndex = 1;
+	private int connectionPointIndex = 1;
 	
 	public Circuit() {
 		connectionPoints = new TreeSet<ConnectionPoint>();
@@ -145,6 +145,11 @@ public class Circuit {
 		return ground;
 	}
 	
+	public void reset() {
+		connectionPoints.forEach((p) -> p.reset());
+		components.forEach((c) -> c.reset());
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
@@ -236,6 +241,10 @@ public class Circuit {
 
 		private Circuit getEnclosingInstance() {
 			return Circuit.this;
+		}
+		
+		public void reset() {
+			this.voltage = 0;
 		}
 
 	}

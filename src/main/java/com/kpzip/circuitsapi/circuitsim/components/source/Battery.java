@@ -1,6 +1,7 @@
-package com.kpzip.circuitsapi.circuitsim.components;
+package com.kpzip.circuitsapi.circuitsim.components.source;
 
 import com.kpzip.circuitsapi.circuitsim.Circuit;
+import com.kpzip.circuitsapi.circuitsim.components.Abstract2NodeComponent;
 
 public class Battery extends Abstract2NodeComponent {
 

@@ -1,6 +1,7 @@
-package com.kpzip.circuitsapi.circuitsim.components;
+package com.kpzip.circuitsapi.circuitsim.components.passive;
 
-import com.kpzip.circuitsapi.circuitsim.Circuit.ConnectionPoint;
+import com.kpzip.circuitsapi.circuitsim.Circuit;
+import com.kpzip.circuitsapi.circuitsim.components.Abstract2NodeComponent;
 
 public class Capacitor extends Abstract2NodeComponent {
 	
@@ -9,7 +10,7 @@ public class Capacitor extends Abstract2NodeComponent {
 	private double charge = 0.0;
 
 	//Capacitance is in Farads
-	public Capacitor(ConnectionPoint first, ConnectionPoint second, final double capacitance) {
+	public Capacitor(Circuit.ConnectionPoint first, Circuit.ConnectionPoint second, final double capacitance) {
 		super(first, second);
 		this.capacitance = capacitance;
 	}
