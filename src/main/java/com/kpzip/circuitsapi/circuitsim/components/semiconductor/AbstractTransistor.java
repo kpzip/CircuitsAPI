@@ -14,8 +14,6 @@ public abstract class AbstractTransistor implements Component {
 	
 	private double collectorEmitterCurrent = 0;
 	private double baseEmitterCurrent = 0;
-	
-	private boolean isOn = false;
 
 	public AbstractTransistor(Circuit.ConnectionPoint collector, Circuit.ConnectionPoint base, Circuit.ConnectionPoint emitter, final double currentGain) {
 		this.collector = collector;
@@ -41,8 +39,15 @@ public abstract class AbstractTransistor implements Component {
 
 	@Override
 	public double[] constraints() {
-		// TODO Auto-generated method stub
-		return null;
+		//						Ic   Ib					Vc   Vb				constant
+		return base.getVoltage() - emitter.getVoltage() < beginningThreshold() ?
+				new double [] {	1.0, -currentGain, 		0.0, 0.0, 			0.0,
+								0.0, 1.0,				0.0, 0.0,			0.0} :
+				(base.getVoltage() - emitter.getVoltage() < endThreshold() ? 
+				new double [] {	1.0, -currentGain, 		0.0, 0.0, 			0.0,
+								0.0, 1.0,				0.0, -IVslope(),	-IVslope() * endThreshold()} : 
+				new double [] {	1.0, -currentGain, 		0.0, 0.0, 			0.0,
+								0.0, 1.0,				0.0, 0.0,			getEndCurrent()});		
 	}
 
 	@Override
@@ -55,9 +60,32 @@ public abstract class AbstractTransistor implements Component {
 	public void reset() {
 		collectorEmitterCurrent = 0;
 		baseEmitterCurrent = 0;
-		isOn = false;
+	}
+	
+	public double getCollectorCurrent() {
+		return collectorEmitterCurrent;
+	}
+	
+	public double getBaseCurrent() {
+		return baseEmitterCurrent;
+	}
+	
+	public double getEmitterCurrent() {
+		return collectorEmitterCurrent + baseEmitterCurrent;
 	}
 	
 	public abstract TransistorType getType();
+	
+	public double beginningThreshold() {
+		return 0.5;
+	}
+	
+	public double endThreshold() {
+		return 0.7;
+	}
+	
+	public abstract double getEndCurrent();
+	
+	public abstract double IVslope();
 
 }
