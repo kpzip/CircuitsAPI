@@ -17,6 +17,8 @@ import com.kpzip.circuitsapi.util.ArrayBuilder;
 
 public class Circuit {
 	
+	public static boolean DEBUG = false;
+	
 	//Nodes should always be in ascending order with no gaps e.g. 0,1,2,3,4,5 NOT 0,2,3,5,6,7,9
 	//Current is determined to flow from high id nodes to low id nodes
 	private TreeSet<ConnectionPoint> connectionPoints;
@@ -146,9 +148,11 @@ public class Circuit {
 			
 		}
 		
-		//Debug: uncomment to print out matrix and vector
-		//System.out.println(Arrays.deepToString(matrix));
-		//System.out.println(Arrays.toString(constants));
+		//Debug: print out matrix and vector
+		if (DEBUG) {
+			System.out.println(Arrays.deepToString(matrix));
+			System.out.println(Arrays.toString(constants));
+		}
 		
 		//Now the matrix is populated, time to solve!
 		RealMatrix A = new Array2DRowRealMatrix(matrix, false);
