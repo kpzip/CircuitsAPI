@@ -11,7 +11,7 @@ public final class Sources {
 		final double alpha = 2 * Math.PI / period;
 		final double beta = phaseShift * alpha;
 		Function gen = (x) -> (amplitude * Math.sin(alpha * x + beta) + verticalShift);
-		return (n1, n2) -> new ImmutableSource(n1, n2, gen);
+		return (n1, n2) -> new ImmutableFunctionGenerator(n1, n2, gen);
 	}
 	
 	public static BiNodeComponentSupplier<? extends AbstractSource> sin(double amplitude, double period, double phaseShift) {
@@ -28,7 +28,7 @@ public final class Sources {
 	public static BiNodeComponentSupplier<? extends AbstractSource> square(double amplitude, double period, double dutyCycle, boolean startOn, double phaseShift, double verticalShift) {
 		if (period == 0 || dutyCycle == 1 || dutyCycle == 0) return (n1, n2) -> new Battery(n1, n2, period == 0 && dutyCycle != 1 && dutyCycle != 0 ? verticalShift + (startOn ? 1 : 0) * amplitude : verticalShift + dutyCycle * amplitude);
 		Function gen = (x) -> ((x - phaseShift) % period > dutyCycle) ^ !startOn ? verticalShift : verticalShift + amplitude;
-		return (n1, n2) -> new ImmutableSource(n1, n2, gen);
+		return (n1, n2) -> new ImmutableFunctionGenerator(n1, n2, gen);
 	}
 	
 	public static BiNodeComponentSupplier<? extends AbstractSource> square(double amplitude, double period, double dutyCycle, boolean startOn, double phaseShift) {
