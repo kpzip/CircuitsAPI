@@ -1,9 +1,8 @@
 package com.kpzip.circuitsapi.circuitsim.components.source;
 
 import com.kpzip.circuitsapi.circuitsim.Circuit;
-import com.kpzip.circuitsapi.circuitsim.components.Abstract2NodeComponent;
 
-public class Battery extends Abstract2NodeComponent {
+public class Battery extends AbstractSource {
 
 	private final double emf;
 	
@@ -11,24 +10,13 @@ public class Battery extends Abstract2NodeComponent {
 		super(annode, cathode);
 		this.emf = emf;
 	}
-
-	@Override
-	public double currentDependence() {
-		return 0;
-	}
-
-	@Override
-	public double voltageDependence() {
-		return 1;
-	}
-
-	@Override
-	public double constantDependence() {
-		//Return -emf if the battery is in reverse
-		return isReversed() ? emf : -emf;
-	}
 	
 	public double getEmf() {
+		return emf;
+	}
+	
+	@Override
+	public double getSourceVoltage() {
 		return emf;
 	}
 	
